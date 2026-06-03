@@ -61,7 +61,17 @@ class User extends Authenticatable
 
   public function isCustomer()
   {
-    return $this->role->name === 'User';
+    return $this->role->name === 'User' || $this->role->name === 'Customer';
+  }
+
+  public function isDriver()
+  {
+    return $this->role->name === 'Driver';
+  }
+
+  public function isRestaurant()
+  {
+    return $this->role->name === 'Restaurant';
   }
 
   public function orders()

@@ -11,8 +11,29 @@ class Order extends Model
 
   protected $fillable = [
     'user_id',
+    'restaurant_id',
+    'driver_id',
     'order_date',
+    'status',
+    'delivery_address',
+    'latitude',
+    'longitude',
+    'delivery_fee',
+    'total_amount',
+    'payment_method',
+    'payment_status',
+    'notes',
   ];
+
+  public function restaurant()
+  {
+    return $this->belongsTo(Restaurant::class);
+  }
+
+  public function driver()
+  {
+    return $this->belongsTo(User::class, 'driver_id');
+  }
 
   public function product()
   {
